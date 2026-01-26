@@ -19,11 +19,11 @@ When entire file is read, report frequency each disease associate with a rare va
 Description of the team's learning points
 
 # Struggles
-Description of the stumbling blocks the team experienced
+Main struggles were becoming acquainted with the use of Github for the class, and identifying edge cases to test for with unit tests.
 
 # Personal Reflections
 ## Group Leader
-Group leader's reflection on the project
+Key takeaway from this project was learning and understanding the group project structure from the perspective of the group leader. As a GitHub novice, I feel more comfortable navigating the use of GitHub in the future. I had less comfortability with aspects of the project, but leveraging open lines of communication and meetings with the group members, I feel my confidence and understanding of the task at hand was strengthened. 
 
 ## Other member
 Other members' reflections on the project
