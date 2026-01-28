@@ -1,3 +1,19 @@
+#!/usr/bin/env python
+"""
+Authors: Spencer Todd, Meghana Ravi, Nicholas Bottomley
+
+Reads a clinvar vcf file and identifies diseases
+associated with rare allele variants.
+
+Prints a list of the frequency of rare variant
+associated diseases.
+
+Usage: python3 project01.py
+"""
+
+
+from pprint import pprint
+
 
 def parse_line(line):
     """
@@ -24,12 +40,13 @@ def parse_line(line):
     af_exac = info_dict.get('AF_EXAC')
     if af_exac is None:
         return []
-    else:
-        af_exac_value = float(af_exac)
+
+    af_exac_value = float(af_exac)
 
     if af_exac_value < 0.0001:
         clndn = info_dict.get('CLNDN')
-        diseases = [disease for disease in clndn.split('|') if disease not in ('not_specified', 'not_provided')]
+        diseases = [disease for disease in clndn.split('|')
+                    if disease not in ('not_specified', 'not_provided')]
     else:
         return []
 
@@ -38,8 +55,10 @@ def parse_line(line):
 
 def read_file(file_name):
     """
-    Takes in file name string argument, then opens and reads line by line,
-    passing line to parsing function to increment count of rare-variant associated
+    Takes in file name string argument,
+    then opens and reads line by line,
+    passing line to parsing function to
+    increment count of rare-variant associated
     diseases in given file.
 
     Args:
@@ -48,7 +67,7 @@ def read_file(file_name):
     Returns:
         dict: Dictionary containing count of disease frequencies
     """
-    disease_count = dict()
+    disease_count = {}
 
     with open(file_name, mode='r', encoding='utf-8') as infile:
         for line in infile:
@@ -69,5 +88,7 @@ def read_file(file_name):
                         disease_count[disease] = 1
 
     return disease_count
-            
-            
+
+
+if __name__ == "__main__":
+    pprint(read_file("clinvar_20190923_short.vcf"))
