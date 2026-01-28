@@ -26,7 +26,7 @@ Main struggles were becoming acquainted with the use of Github for the class, an
 Key takeaway from this project was learning and understanding the group project structure from the perspective of the group leader. As a GitHub novice, I feel more comfortable navigating the use of GitHub in the future. I had less comfortability with aspects of the project, but leveraging open lines of communication and meetings with the group members, I feel my confidence and understanding of the task at hand was strengthened. 
 
 ## Other member
-Other members' reflections on the project
+Meghana: This project helped get familiar with using GitHub since I hadn't really used it before this, especially in a collaborative way. I didn't really understand how to coordinate with my group on GitHub at first, but actually doing it made it easier for me to understand. This was the first time I worked in a team for a code-based project and I think it has helped improve my understanding of the process.
 
 # Generative AI Appendix
 As per the syllabus
