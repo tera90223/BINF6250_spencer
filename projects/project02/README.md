@@ -26,13 +26,14 @@ Takes as input:
 This function trains (adds to) a 0-order Markov model based on the inputted text
 Needs to NOT overwrite what's already in the model
 
-{str: {str: int}}
+Here's the data structure that the Markov model uses to store its edges and frequencies: {str: {str: int}}
+
 
 At the start of working with this line, do all this:
 
-now we can split the line into separate words--> TODO account for punctuation (treat punctuation characters as their own words)
-[word, word, word, \n]
+now we can split the line into separate words--> treat punctuation as part of a word
 
+Here's our scheme for how we handle the start and end states in the model: 
 
 *S* --> line                    happens at start of file
 \n from prev --> line           happens for all middle lines
@@ -53,15 +54,16 @@ Make this a helper function that takes the dict of dicts, word i, and word i+1 a
     go into the outer dictionary and try to access the key for word i using dict.get()
     |--> if it doesn't exit, pass dict.get() the default value of an empty dict
     
-    Now the inner dict definitely exists but may not have the key
+Now the inner dict definitely exists but may not have the key
 
-    access the inner dictionary and attempt to access the key for word i+1 using dict.get()
+access the inner dictionary and attempt to access the key for word i+1 using dict.get()
     |--> if it doesn't exist set the default to 0
     set the value for this key in the inner dictionary to be 1 if it wasn't already in the dict, and add 1 to it if it already exists
 
-    return the updated dictionary
+return the updated dictionary
     So this function gets called by assigning the dict of dicts to the value that this returns
 
+Here is how we planned to access the outter and inner dictionaries in our model while updating counts (this method let us access a key's value or assign a key a default value if the key wasn't already in the dict. 
 dict.get(key, default_value)
 dict[key] = dict.get(key, default_value={})
 dict[word2] = dict.get(word2, default_value=0) + 1
@@ -81,7 +83,7 @@ Calculate transition probilities for all next states from a given state (counts/
 Description of the team's learning points
 
 # Struggles
-We were unaware that when numpy randomly chose a string from our dictionary of probabiilities, it would return a numpy string. This broke the comparison between the keys in the dictionary (which were normal strings) and the key composed of the last N randomly selected words (which got returned as numpy strings) and caused our model to fail to generate anything. 
+We were unaware that when numpy randomly chose a string from our dictionary of probabiilities, it would return a numpy string. This broke the comparison between the keys in the dictionary (which were normal strings) and the tuple containing the last N randomly selected words (which got returned as numpy strings) and caused our model to fail to generate anything. 
 Our choice to have the end state only come after the end of the file (as opposed to at the end of each line or some other alternative), combined with the fact that each of these models is only trained on one file, meant that our model could only hit an end state and organically finish generating text when it generated the specific word or sequence of words that happened to be at the end of the training file. This led to our model generating large amounts of text until it would stumble into the only word or sequence of words that allowed it to break from its infinite loop, or (more realistically) it would run out of memory. The solution to this was a tweak that allowed the model to stop generating text if it generated a sequence of words that didn't exist in the training data (such a sequence would have no edges in our Markov model). 
 
 # Personal Reflections
@@ -91,7 +93,7 @@ Spencer:
 ## Other member
 Chantera:
 
-Justin:
+Justin: I am happy with how it went working with Chantera and Spencer. We were all able to coordinate to meet up multiple times outside of class and work in tandem over a teams meeting and discuss our perspectives on how to tackle the issues. I did my best to take initiative with starting the pseudocode and scripting in python to get the ball rolling at the start of our meetings, and I am glad that I was able to jumpstart our sessions and get discussion flowing by diong that. We did a great job of bouncing ideas off of each other and working through everything together, which is a lot more enjoyable than trying to divide and conquer. 
 
 # Generative AI Appendix
 We did not use generative AI during this project. 
